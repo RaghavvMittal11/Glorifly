@@ -1,0 +1,83 @@
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.utils.translation import gettext_lazy as _
+from .models import (
+    Subject, Chapter, Book, PYQ, Answer, Solution, Question,
+    Student, Goals, MockTest, MockTestQuestion, SWOTanalysis, Ranking, Test
+)
+
+@admin.register(Subject)
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ('id', 'subject_name')
+    search_fields = ('subject_name',)
+
+@admin.register(Chapter)
+class ChapterAdmin(admin.ModelAdmin):
+    list_display = ('id', 'chapter_name', 'subject')
+    list_filter = ('subject',)
+    search_fields = ('chapter_name',)
+
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('id', 'book_name', 'author', 'edition')
+    search_fields = ('book_name', 'author')
+
+@admin.register(PYQ)
+class PYQAdmin(admin.ModelAdmin):
+    list_display = ('id', 'exam_name', 'year_num')
+    list_filter = ('exam_name', 'year_num')
+    search_fields = ('exam_name',)
+
+@admin.register(Answer)
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'answer_text')
+    search_fields = ('answer_text',)
+
+@admin.register(Solution)
+class SolutionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'solution_text')
+    search_fields = ('solution_text',)
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'question_text', 'chapter', 'level_mode', 'type', 'subject')
+    list_filter = ('level_mode', 'type', 'subject')
+    search_fields = ('question_text',)
+
+@admin.register(Goals)
+class GoalsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'student', 'exam', 'rank_aim')
+    list_filter = ('exam',)
+    search_fields = ('exam',)
+
+@admin.register(MockTest)
+class MockTestAdmin(admin.ModelAdmin):
+    list_display = ('id', 'student', 'test_type', 'total_marks_obtained', 'nos_question', 'test_time', 'created_at', 'taken_at')
+    list_filter = ('test_type', 'created_at', 'taken_at')
+    search_fields = ('student__student_name',)
+
+@admin.register(MockTestQuestion)
+class MockTestQuestionAdmin(admin.ModelAdmin):
+    list_display = ('test', 'question', 'marks_obtained')
+    list_filter = ('test', 'question')
+
+@admin.register(SWOTanalysis)
+class SWOTanalysisAdmin(admin.ModelAdmin):
+    list_display = ('student', 'test', 'strength', 'weakness', 'opportunity', 'threat')
+    list_filter = ('test',)
+
+@admin.register(Ranking)
+class RankingAdmin(admin.ModelAdmin):
+    list_display = ('student', 'test', 'rank_position')
+    list_filter = ('test', 'rank_position')
+
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ('student_email', 'student_name', 'student_phone_number')
+    search_fields = ('student_email', 'student_name')
+
+@admin.register(Test)
+class TestAdmin(admin.ModelAdmin):
+    list_display = ('id', 'test_type', 'total_marks_obtained', 'nos_question', 'test_time', 'created_at', 'taken_at')
+    list_filter = ('test_type', 'created_at', 'taken_at')
+    search_fields = ('student__student_name',)
