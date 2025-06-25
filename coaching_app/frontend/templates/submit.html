@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glorifly - Performance Analysis</title>
+    <link rel="stylesheet" href="../static/css/submit.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Performance Analysis Dashboard</h1>
+        
+        <div class="score-summary">
+            <div class="score-card">
+                <h3>Total Score</h3>
+                <p id="score" class="score">Score</p>
+                <p>out of 100</p>
+            </div>
+            <div class="score-card">
+                <h3>Rank</h3>
+                <p id ="rank" class="score">Rank</p>
+                <p>out of 150</p>
+            </div>
+        </div>
+
+        <div class="subject-scores">
+            <h2>Subject-wise Performance</h2>
+            <div class="subjects-grid">
+                <div class="subject-card physics">
+                    <h3>Physics</h3>
+                    <div id="p-score" class="subject-score">Physics_marks</div>
+                </div>
+                <div class="subject-card chemistry">
+                    <h3>Chemistry</h3>
+                    <div id="c-score" class="subject-score">Chemistry_marks</div>
+                </div>
+                <div class="subject-card mathematics">
+                    <h3>Mathematics</h3>
+                    <div id="m-score" class="subject-score">Mathematics_marks</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="swot-analysis-container">
+            <h2>SWOT Analysis by Subject</h2>
+            <div id = "result" class="swot-category">
+                
+        </div>
+    <script src="../static/js/submit.js"></script>
+</body>
+</html>
